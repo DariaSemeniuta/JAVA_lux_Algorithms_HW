@@ -2,13 +2,15 @@ package project.view;
 
 import project.App;
 import project.algorithms.*;
+import project.binaryTreeSearch.Node;
+import project.binaryTreeSearch.Tree;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdClientService {
-    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "5. Merge sort", "6. Binary search","7. Show menu","0. Exit"};
+    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "5. Merge sort", "6. Binary search","7. Show menu","8. Binary tree search", "0. Exit"};
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     private static void showMenuItems(){
@@ -55,6 +57,10 @@ public class CmdClientService {
                     case 7:
                         showMenuItems();
                         break;
+                    case 8:
+                        showBinaryTreeSearch();
+                        break;
+
                     default:
                         System.out.println("Please enter correct number");
                         break;
@@ -68,6 +74,15 @@ public class CmdClientService {
 
         System.exit(0);
     }
+
+private void showBinaryTreeSearch(){
+        Tree binaryTreeSearch = new Tree();
+        for (int i=0; i<App.arr.length; ++i){
+            binaryTreeSearch.addNode(new Node(App.arr[i]), binaryTreeSearch.root);
+        }
+        binaryTreeSearch.printTree(binaryTreeSearch.root, "root - ");
+        binaryTreeSearch.findNode(6, binaryTreeSearch.root);
+}
 
 private void performSort(Algorithms algorithm){
     System.out.println("Array before: ");
