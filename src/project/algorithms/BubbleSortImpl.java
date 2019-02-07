@@ -1,6 +1,6 @@
 package project.algorithms;
 
-public class BubbleSort implements Algorithms {
+public class BubbleSortImpl implements Algorithms {
     @Override
     public void sort(int[] arr) {
         int n = arr.length;
