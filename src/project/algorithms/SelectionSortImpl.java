@@ -13,5 +13,10 @@ public class SelectionSortImpl implements Algorithms {
             }
         }
     }
+
+    @Override
+    public void sort(int[] arr, int start, int stop) {
+
+    }
 }
 

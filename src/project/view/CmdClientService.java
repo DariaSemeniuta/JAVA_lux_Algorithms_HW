@@ -1,17 +1,14 @@
 package project.view;
 
 import project.App;
-import project.algorithms.Algorithms;
-import project.algorithms.BubbleSort;
-import project.algorithms.InsertionSortImpl;
-import project.algorithms.SelectionSortImpl;
+import project.algorithms.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdClientService {
-    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort","7. Show menu","0. Exit"};
+    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "7. Show menu","0. Exit"};
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     private static void showMenuItems(){
@@ -46,6 +43,9 @@ public class CmdClientService {
                     case 3:
                         performSort(new BubbleSort());
                         break;
+                    case 4:
+                        performSort(new QuickSortImpl());
+                        break;
                     case 7:
                         showMenuItems();
                         break;
@@ -66,9 +66,13 @@ public class CmdClientService {
 private void performSort(Algorithms algorithm){
     System.out.println("Array before: ");
     printArray(App.arr);
-    algorithm = new SelectionSortImpl();
     int[] cloneArray = App.arr.clone();
-    algorithm.sort(cloneArray);
+    if (algorithm instanceof QuickSortImpl){
+        algorithm.sort(cloneArray, 0, cloneArray.length);
+    }
+    else {
+        algorithm.sort(cloneArray);
+    }
     System.out.println("\nSorted array: ");
     printArray(cloneArray);
 }

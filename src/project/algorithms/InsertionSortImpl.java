@@ -14,4 +14,9 @@ public class InsertionSortImpl implements Algorithms{
             }
         }
     }
+
+    @Override
+    public void sort(int[] arr, int start, int stop) {
+
+    }
 }
