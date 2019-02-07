@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdClientService {
-    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "5. Merge sort", "7. Show menu","0. Exit"};
+    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "5. Merge sort", "6. Binary search","7. Show menu","0. Exit"};
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     private static void showMenuItems(){
@@ -49,6 +49,9 @@ public class CmdClientService {
                     case 5:
                         performSort(new MergeSortImpl());
                         break;
+                    case 6:
+                        performBinarySearch();
+                        break;
                     case 7:
                         showMenuItems();
                         break;
@@ -88,6 +91,31 @@ private void printArray(int[] arr){
     }
 }
 
+private void performBinarySearch(){
+   int[] cloneArr = App.arr.clone();
+   new BubbleSortImpl().sort(cloneArr);
+   System.out.println("Array :");
+   printArray(cloneArr);
+   System.out.println("Please enter element to find index");
+
+   int element ;
+    String response;
+    try {
+        response = input.readLine();
+            try {
+                element = new Integer(response);
+                int indx = new BinarySearch().binarySearch(cloneArr, element);
+                System.out.println("You found element with index = "+ indx);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter number value!");
+            }
+    }catch (IOException e){
+        e.printStackTrace();
+    }
+
+
+
+}
 
 
 
