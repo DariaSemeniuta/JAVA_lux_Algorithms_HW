@@ -2,6 +2,7 @@ package project.view;
 
 import project.App;
 import project.algorithms.Algorithms;
+import project.algorithms.BubbleSort;
 import project.algorithms.InsertionSortImpl;
 import project.algorithms.SelectionSortImpl;
 
@@ -10,24 +11,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdClientService {
-    private String[] menuItems = {"1. Selection sort", "2. Insertion sort", "0. Exit"};
+    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort","7. Show menu","0. Exit"};
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    //private Algorithms algorithm;
 
-    public void showMenuItems(){
+    private static void showMenuItems(){
         System.out.println(" Menu:");
         for (String item: menuItems) {
             System.out.println("|------------------------|");
             System.out.println(" "+item);
         }
         System.out.println("|________________________|");
+        System.out.print("Please enter number of menu item => ");
+
     }
 
     public void getUserResponse() {
-        System.out.print("Please enter number of menu item => ");
+        showMenuItems();
         String response;
         try{
-            int item = -1;
+            int item = 0;
             while (!(response=input.readLine()).equals("0")){
                 try{
                     item = new Integer(response);
@@ -40,6 +42,12 @@ public class CmdClientService {
                         break;
                     case 2:
                         performSort(new InsertionSortImpl());
+                        break;
+                    case 3:
+                        performSort(new BubbleSort());
+                        break;
+                    case 7:
+                        showMenuItems();
                         break;
                     default:
                         System.out.println("Please enter correct number");
