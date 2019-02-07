@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdClientService {
-    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "7. Show menu","0. Exit"};
+    private static String[] menuItems = {"1. Selection sort", "2. Insertion sort", "3. Bubble sort", "4. Quick sort", "5. Merge sort", "7. Show menu","0. Exit"};
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     private static void showMenuItems(){
@@ -41,10 +41,13 @@ public class CmdClientService {
                         performSort(new InsertionSortImpl());
                         break;
                     case 3:
-                        performSort(new BubbleSort());
+                        performSort(new BubbleSortImpl());
                         break;
                     case 4:
                         performSort(new QuickSortImpl());
+                        break;
+                    case 5:
+                        performSort(new MergeSortImpl());
                         break;
                     case 7:
                         showMenuItems();
@@ -69,6 +72,9 @@ private void performSort(Algorithms algorithm){
     int[] cloneArray = App.arr.clone();
     if (algorithm instanceof QuickSortImpl){
         algorithm.sort(cloneArray, 0, cloneArray.length);
+    }
+    if(algorithm instanceof MergeSortImpl){
+        algorithm.sort(cloneArray, 0, cloneArray.length-1);
     }
     else {
         algorithm.sort(cloneArray);
