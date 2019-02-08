@@ -3,13 +3,13 @@ package project.binaryTreeSearch;
 public class Tree {
 
     public Node root;
-    public Node rightChild;
-    public Node leftChild;
+    //public Node rightChild;
+    //public Node leftChild;
 
     public Tree() {
         this.root = null;
-        this.leftChild = null;
-        this.rightChild = null;
+        //this.leftChild = null;
+        //this.rightChild = null;
     }
 
     public  void addNode(Node newNode, Node top){
