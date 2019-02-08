@@ -80,8 +80,8 @@ public class Tree {
     }
 
 
-
-    public static void main(String[] args){
+    //used for testing
+    /*public static void main(String[] args){
         int[] arr = {2, 3, 8, 1, 5, 9};
         Tree bts = new Tree();
         for (int i=0; i<arr.length;++i){
@@ -89,5 +89,5 @@ public class Tree {
         }
         bts.printTree(bts.root, "root - ");
         bts.findNode(8, bts.root);
-    }
+    }*/
 }
